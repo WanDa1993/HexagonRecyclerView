@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="Polygon">
+        <attr name="radius" format="dimension|reference" />
+        <attr name="outerWidth" format="dimension|reference" />
+        <attr name="outerColor" format="color|reference" />
+        <attr name="innerColor" format="color|reference" />
+        <attr name="isFull" format="boolean|reference" />
+    </declare-styleable>
+
+</resources>
