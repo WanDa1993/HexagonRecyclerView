@@ -65,6 +65,8 @@ Ivy:
 
 ## (4)基本使用方式:
 
+具体使用请参考Simple,如果有Bug,请及时提Issue,或者邮箱反馈.
+
 Adapter的ItemView
 
 ```
