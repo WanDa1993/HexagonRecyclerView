@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         mAdapter = new Adapter();
-        mMainRv.setLayoutManager(new PolygonLayoutManager(true));
+        PolygonLayoutManager manager = new PolygonLayoutManager(true);
+        manager.setLandscapeInterval(0);
+        mMainRv.setLayoutManager(manager);
         mMainRv.setAdapter(mAdapter);
     }
 
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 //随机设置Item颜色
                 holder.item.setInnerColor(randomColor());
             } else {
-                holder.item.setRadius(200);
+                //holder.item.setRadius(200);
             }
             holder.item.setOnClickListener(new View.OnClickListener() {
                 @Override
