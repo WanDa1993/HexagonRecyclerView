@@ -124,8 +124,20 @@ setLandscapeInterval(int value)
 设置正六边形之间的横向缝隙大小
 ```
 
+## (5)注意事项:
 
-## PolygonItemView参数设置
+1.在设置边框的时候,如果边框长度过大,显示不全边框,请调整正六边形外圆半径radius大小.
+
+2.如果需要第一个正六边形变大,请设置所有View为统一大小,然后修改radius大小.
+
+3.默认配色 outerColor: 为浅黄 innerColor : 为白色.
+
+4.如果不设置radius,那么radius将会取最大宽度的1/2.
+
+5.简单调整PolygonItemView的大小和radius的大小就可以轻松实现你要的效果.
+
+
+## (6)PolygonItemView参数设置
 
 | Name          | 介绍    |  对应方法  |   缺省值 |
 | --------      | :-----:   | :----: |  :-----:  |
