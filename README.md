@@ -2,8 +2,6 @@
 
 ## HexagonRecyclerView的完整解析
 
-## HexagonRecyclerView的完全解析
-
 [HexagonRecyclerView的完全解析](http://blog.csdn.net/l540675759/article/details/75635290)
 
 
