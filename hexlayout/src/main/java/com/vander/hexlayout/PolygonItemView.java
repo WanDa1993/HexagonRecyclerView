@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.graphics.Region;
+import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -56,7 +57,13 @@ public class PolygonItemView extends View {
     private int mCenterY;
 
     //是否无边框填充
-    private boolean isFull;
+    private boolean isHasStroke;
+
+    //绘制阴影状态变量
+    private float mShadowRadius;
+    private float mShadowDx, mShadowDy;
+    private int mShadowColor;
+
 
     public PolygonItemView(Context context) {
         this(context, null);
@@ -73,12 +80,15 @@ public class PolygonItemView extends View {
         mInnerColor = mTypeArray.getColor(R.styleable.Polygon_innerColor, Color.WHITE);
         mOuterColor = mTypeArray.getColor(R.styleable.Polygon_outerColor, DEFAULT_OUTER_COLOR);
         mOuterWidth = mTypeArray.getDimensionPixelSize(R.styleable.Polygon_outerWidth, DEFAULT_OUTER_WIDTH);
-        isFull = mTypeArray.getBoolean(R.styleable.Polygon_isFull, true);
+        isHasStroke = mTypeArray.getBoolean(R.styleable.Polygon_isHasStroke, true);
         mTypeArray.recycle();
         initData();
     }
 
     private void initData() {
+        //关闭硬件加速，为了可以设置阴影
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
+
         mOuterPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mOuterPaint.setStyle(Paint.Style.STROKE);
         mOuterPaint.setStrokeWidth(mOuterWidth);
@@ -131,7 +141,7 @@ public class PolygonItemView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawPath(mViewPath, mInnerPaint);
-        if (isFull) {
+        if (isHasStroke) {
             canvas.drawPath(mViewPath, mOuterPaint);
         }
     }
@@ -209,12 +219,12 @@ public class PolygonItemView extends View {
      * 设置正六边形是否被填充(无边框)
      */
     public void setViewFullMode(boolean isFull) {
-        this.isFull = isFull;
+        this.isHasStroke = isFull;
         invalidate();
     }
 
     public boolean getViewFullMode() {
-        return isFull;
+        return isHasStroke;
     }
 
     /**
@@ -229,4 +239,40 @@ public class PolygonItemView extends View {
     public int getRadius() {
         return mRadius;
     }
+
+    /**
+     * 设置阴影  指的是实心的阴影
+     */
+    public void setShadowLayer(float radius, float dx, float dy, int color, boolean isOuter) {
+        if (isOuter && isHasStroke) {
+            mOuterPaint.setShadowLayer(radius, dx, dy, color);
+        } else if (!isOuter) {
+            mInnerPaint.setShadowLayer(radius, dx, dy, color);
+        } else {
+            return;
+        }
+        mShadowRadius = radius;
+        mShadowDx = dx;
+        mShadowDy = dy;
+        mShadowColor = color;
+        invalidate();
+    }
+
+    public float getShadowRadius() {
+        return mShadowRadius;
+    }
+
+    public float getShadowDx() {
+        return mShadowDx;
+    }
+
+    public float getShadowDy() {
+        return mShadowDy;
+    }
+
+    @ColorInt
+    public int getShadowColor() {
+        return mShadowColor;
+    }
+
 }

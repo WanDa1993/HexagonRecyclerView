@@ -6,7 +6,7 @@
         <attr name="outerWidth" format="dimension|reference" />
         <attr name="outerColor" format="color|reference" />
         <attr name="innerColor" format="color|reference" />
-        <attr name="isFull" format="boolean|reference" />
+        <attr name="isHasStroke" format="boolean|reference" />
     </declare-styleable>
 
 </resources>

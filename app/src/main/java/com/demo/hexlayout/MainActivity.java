@@ -1,5 +1,6 @@
 package com.demo.hexlayout;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -70,8 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 holder.text.setText(position + "");
                 //随机设置Item颜色
                 holder.item.setInnerColor(randomColor());
+                //设置阴影
+                //holder.item.setShadowLayer(10,3,3, Color.BLACK,true);
             } else {
-                //holder.item.setRadius(200);
+                holder.item.setRadius(200);
             }
             holder.item.setOnClickListener(new View.OnClickListener() {
                 @Override

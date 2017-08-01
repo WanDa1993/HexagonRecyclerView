@@ -11,7 +11,7 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         app:innerColor="@android:color/white"
-        app:isFull="true"
+        app:isHasStroke="true"
         app:outerColor="#f5c421"
         app:outerWidth="1dp"
         app:radius="50dp" />

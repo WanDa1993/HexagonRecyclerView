@@ -4,13 +4,21 @@
 
 [HexagonRecyclerView的完全解析](http://blog.csdn.net/l540675759/article/details/75635290)
 
+## 版本更新
+
+```
+1.0.4
+
+1.增加了正六边形的阴影绘制setShadowLayer()方法,可选择边框阴影和外部阴影.
+2.isFull属性更换成isHasStroke,为了使表达更清晰.
+```
 
 ## (1)依赖:
 
 Gradle:
 
 ```
-compile 'com.vander.hexlayout:hexlayout:1.0.3'
+compile 'com.vander.hexlayout:hexlayout:1.0.4'
 ```
 
 Maven:
@@ -19,14 +27,14 @@ Maven:
 <dependency>
   <groupId>com.vander.hexlayout</groupId>
   <artifactId>hexlayout</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <type>pom</type>
 </dependency>
 ```
 
 Ivy:
 ```
-<dependency org='com.vander.hexlayout' name='hexlayout' rev='1.0.3'>
+<dependency org='com.vander.hexlayout' name='hexlayout' rev='1.0.4'>
   <artifact name='hexlayout' ext='pom' ></artifact>
 </dependency>
 ```
@@ -79,7 +87,7 @@ Adapter的ItemView
         android:layout_width="110dp"
         android:layout_height="110dp"
         app:innerColor="@android:color/white"
-        app:isFull="true"
+        app:isHasStroke="true"
         app:outerColor="#f5c421"
         app:outerWidth="1dp"
         app:radius="50dp" />
@@ -109,7 +117,7 @@ app:radius="50dp"
 设置正六边形的外切圆半径,如果不设置的话,
 默认取最大外切圆半径,即 width/2
 
-app:isFull="true"
+app:isHasStroke="true"
 
 设置正六边形的填充模式,默认存在边框
 
@@ -150,7 +158,7 @@ setLandscapeInterval(int value)
 | mOuterWidth   | 绘制的边框宽度                                            |   setOuterWidth(int)        |   4              |
 | mOuterColor   | 绘制的边框颜色                                            |   setOuterColor(int)        |    #f5c421       |
 | mInnerColor   | 正六边形的内部颜色                                        |   setInnerColor(int)        |   白色white      |
-| isFull        | 填充模式                                                  |   setViewFullMode(boolean)  |   true           |
+| isHasStroke   | 填充模式                                                  |   setViewFullMode(boolean)  |   true           |
 
 ## PolygonLayoutManager参数设置
 
